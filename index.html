@@ -71,6 +71,11 @@
   .note{background:var(--soft);border-left:3px solid var(--accent);padding:11px 15px;border-radius:0 8px 8px 0;color:#3a4654;font-size:14px;margin-top:14px}
   footer{background:var(--ink);color:#9aa6b4;padding:26px 0;font-size:13px;text-align:center}
   footer b{color:#e8edf2}
+  .zoom{cursor:zoom-in}
+  #lb{display:none;position:fixed;inset:0;background:rgba(15,20,26,.9);z-index:999;
+    align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
+  #lb.on{display:flex}
+  #lb img{max-width:94%;max-height:94%;border-radius:8px;box-shadow:0 10px 40px rgba(0,0,0,.5);background:#fff}
 </style>
 </head>
 <body>
@@ -94,7 +99,7 @@
     <p class="lead">На <b>кожен</b> із 30 артикулів — <b>6 кадрів</b>: 4 основні ракурси (строго 90°, без нахилу) + 1 під кутом + 1 з краплями. Усі — на прозорому фоні.</p>
 
     <div class="figure">
-      <img src="assets/ref_angles.png" alt="Схема ракурсів — стандарт Listex">
+      <img class="zoom" src="assets/ref_angles.png" alt="Схема ракурсів — стандарт Listex">
       <div class="cap">Офіційна схема комплекту: «2 або 4 основні + 1 під кутом + 1 фронтальна з краплями». Джерело — <a href="listex-photo-rules.pdf" target="_blank">правила оцифрування (Listex) ↗</a></div>
     </div>
 
@@ -121,11 +126,11 @@
         <div class="body"><b>4 основні ракурси</b><small>камера обходить тару по 90°. <span style="color:#3D5168">●</span> — фронт (етикетка). Строго без нахилу.</small></div>
       </div>
       <div class="shot">
-        <div class="ph"><span class="tag">кут</span><img src="assets/ref_cans.png" alt="приклад під кутом"></div>
+        <div class="ph"><span class="tag">кут</span><img class="zoom" src="assets/ref_cans.png" alt="приклад під кутом"></div>
         <div class="body"><b>1 під кутом (hero)</b><small>зверху 30°–60°, найапетитніший, з відблисками</small></div>
       </div>
       <div class="shot">
-        <div class="ph"><span class="tag">з краплями</span><img src="assets/ref_drops.png" alt="референс з краплями"></div>
+        <div class="ph"><span class="tag">з краплями</span><img class="zoom" src="assets/ref_drops.png" alt="референс з краплями"></div>
         <div class="body"><b>1 з краплями (drops)</b><small>фронт + конденсат. Тільки для газованих напоїв (CSD)</small></div>
       </div>
     </div>
@@ -207,6 +212,22 @@
     <p>Внутрішній бриф для рендеру. <b>noindex</b>. Оновлено: червень 2026.</p>
   </div>
 </footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+  (function(){
+    var lb = document.getElementById('lb');
+    var lbImg = lb.querySelector('img');
+    document.querySelectorAll('img.zoom').forEach(function(im){
+      im.addEventListener('click', function(){
+        lbImg.src = im.src;
+        lb.classList.add('on');
+      });
+    });
+    lb.addEventListener('click', function(){ lb.classList.remove('on'); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('on'); });
+  })();
+</script>
 
 </body>
 </html>
