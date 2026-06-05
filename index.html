@@ -64,6 +64,9 @@
   .cnt{color:var(--muted);font-weight:400}
   .flow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
   .flow .box{flex:1 1 260px;border-radius:10px;padding:16px 18px;border:1px solid var(--line);background:var(--soft)}
+  .btn{display:inline-block;margin-top:12px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;
+    padding:9px 16px;border-radius:8px;text-decoration:none}
+  .btn:hover{background:#2f3f52;text-decoration:none}
   code{background:var(--ink);color:#E8EDF2;padding:2px 7px;border-radius:4px;font-family:Consolas,monospace;font-size:13px;word-break:break-all}
   .note{background:var(--soft);border-left:3px solid var(--accent);padding:11px 15px;border-radius:0 8px 8px 0;color:#3a4654;font-size:14px;margin-top:14px}
   footer{background:var(--ink);color:#9aa6b4;padding:26px 0;font-size:13px;text-align:center}
@@ -161,13 +164,17 @@
     <div class="flow">
       <div class="box">
         <h3>📥 Звідки брати (вхідні)</h3>
-        <p style="font-size:14px;color:#3a4654;margin-top:6px">Етикетки-текстури (PNG 8080×2080, прозорий фон) + 3D-модель банки (FBX). Корінь: <a href="https://drive.google.com/drive/folders/1eB3VtQK9T1bF070PnRBI4blC3HqZuzGB" target="_blank">вхідна папка ↗</a></p>
+        <p style="font-size:14px;color:#3a4654;margin-top:6px">Етикетки-текстури (PNG 8080×2080, прозорий фон) + 3D-модель банки (FBX). Усі літражі в одній папці.</p>
+        <a class="btn" href="https://drive.google.com/drive/folders/1eB3VtQK9T1bF070PnRBI4blC3HqZuzGB" target="_blank">⬇ Вхідна папка — завантажити все</a>
       </div>
       <div class="box">
         <h3>📤 Куди вантажити (рендери)</h3>
-        <p style="font-size:14px;color:#3a4654;margin-top:6px">Готові PNG складати у відповідну папку-літраж. Корінь: <a href="https://drive.google.com/drive/folders/1hxI2pRLPfvMHK8m_Sc_IKLj2SBTsxBsJ" target="_blank">вихідна папка ↗</a></p>
+        <p style="font-size:14px;color:#3a4654;margin-top:6px">Готові PNG складати у відповідну папку-літраж усередині спільної папки.</p>
+        <a class="btn" href="https://drive.google.com/drive/folders/1hxI2pRLPfvMHK8m_Sc_IKLj2SBTsxBsJ" target="_blank">📂 Вихідна папка — відкрити</a>
       </div>
     </div>
+
+    <p class="note">Щоб скачати все одним архівом: відкрий вхідну папку → виділи все (Ctrl+A) → <b>Завантажити</b> — Google Drive сам спакує в .zip. Нижче — те саме по літражу окремо.</p>
 
     <div class="card" style="padding:6px 8px">
     <table>
