@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>PEPSI · Бриф для рендеру пляшок і банок</title>
+<style>
+  :root{
+    --pepsi-blue:#004B93;
+    --pepsi-blue-bright:#005CB4;
+    --pepsi-cyan:#1A9CD8;
+    --pepsi-red:#E32934;
+    --ink:#0A1A2F;
+    --paper:#F4F7FB;
+    --card:#FFFFFF;
+    --muted:#5A6B82;
+    --line:#DCE5F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--pepsi-blue-bright);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  header.hero{
+    background:
+      radial-gradient(circle at 20% 20%, rgba(26,156,216,.35), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(227,41,52,.30), transparent 45%),
+      linear-gradient(135deg,#012E5C 0%, #004B93 55%, #003A73 100%);
+    color:#fff;padding:64px 0 56px;position:relative;overflow:hidden;
+  }
+  .globe{
+    width:78px;height:78px;border-radius:50%;position:relative;
+    background:linear-gradient(#fff 0 50%, var(--pepsi-red) 50% 100%);
+    box-shadow:0 6px 24px rgba(0,0,0,.35);flex:0 0 auto;
+    border:4px solid #fff;
+  }
+  .globe::after{
+    content:"";position:absolute;left:-4px;right:-4px;top:42%;height:16%;
+    background:#fff;border-radius:50%;transform:rotate(-18deg);
+  }
+  .hero-top{display:flex;align-items:center;gap:22px;margin-bottom:28px}
+  .hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.5px;line-height:1.08}
+  .hero .sub{font-size:18px;color:#CFE2F5;margin-top:10px;max-width:680px}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .badge{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    padding:8px 14px;border-radius:999px;font-size:14px;font-weight:600;backdrop-filter:blur(4px);
+  }
+  .badge b{color:#fff}
+
+  /* SECTIONS */
+  section{padding:46px 0}
+  section + section{border-top:1px solid var(--line)}
+  h2{font-size:24px;font-weight:800;color:var(--pepsi-blue);margin-bottom:6px;display:flex;align-items:center;gap:12px}
+  h2 .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;background:var(--pepsi-red);color:#fff;
+    font-size:16px;flex:0 0 auto;
+  }
+  .lead{color:var(--muted);margin:4px 0 22px;max-width:760px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:0 1px 2px rgba(10,26,47,.04)}
+  .grid{display:grid;gap:16px}
+  .grid-2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .grid-3{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+
+  /* FILL-ME callout */
+  .fillme{
+    border:2px dashed var(--pepsi-red);background:#FFF5F5;border-radius:14px;padding:22px 24px;
+  }
+  .fillme .tag{display:inline-block;background:var(--pepsi-red);color:#fff;font-size:12px;font-weight:700;
+    letter-spacing:.5px;padding:4px 10px;border-radius:6px;text-transform:uppercase;margin-bottom:10px}
+  .fillme ul{margin:8px 0 0 18px;color:#7a1d24}
+  .placeholder{color:#B23A42;font-style:italic}
+
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{background:#EEF4FB;color:var(--pepsi-blue);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.3px}
+  tr:last-child td{border-bottom:none}
+  td .sku{font-variant-numeric:tabular-nums;font-weight:700}
+  .pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px}
+  .pill.zero{background:#E4F0FA;color:var(--pepsi-blue)}
+  .pill.reg{background:#FDE7E9;color:var(--pepsi-red)}
+  .pill.can{background:#E9EDF2;color:#46566b}
+
+  .spec{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+  .spec:last-child{border-bottom:none}
+  .spec .k{flex:0 0 190px;font-weight:700;color:var(--ink)}
+  .spec .v{color:#33445c}
+  .editable{background:#FFFBEA;border-bottom:1px dashed #E0B400;padding:0 3px}
+
+  .vol-list{list-style:none;display:grid;gap:8px}
+  .vol-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:10px 14px;background:#F7FAFE;border:1px solid var(--line);border-radius:10px}
+  .vol-list .cnt{font-size:13px;color:var(--muted)}
+
+  code.path{background:#0A1A2F;color:#A8E0FF;padding:2px 8px;border-radius:6px;font-size:13px;
+    font-family:'Consolas',monospace;word-break:break-all}
+  .note{background:#FFF8E6;border-left:4px solid #E0B400;padding:12px 16px;border-radius:0 10px 10px 0;color:#6b5600;margin-top:14px;font-size:14px}
+  .ok{background:#EAF7EE;border-left:4px solid #2E9E54;color:#1d6b39}
+
+  footer{background:var(--ink);color:#9FB3CC;padding:34px 0;font-size:13px;text-align:center}
+  footer b{color:#fff}
+  .kpi{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+  .kpi .box{flex:1 1 120px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .kpi .box .n{font-size:30px;font-weight:800;color:var(--pepsi-blue);line-height:1}
+  .kpi .box .l{font-size:13px;color:var(--muted);margin-top:4px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="globe" aria-hidden="true"></div>
+      <div>
+        <h1>PEPSI — Рендер пляшок і банок</h1>
+        <div class="sub">Технічний бриф для 3D / рендер-спеціаліста. Літня кампанія 2026 · повна лінійка SKU (Regular + Zero, Lazy + Crazy).</div>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge"><b>30</b> артикулів</span>
+      <span class="badge"><b>180</b> рендерів</span>
+      <span class="badge"><b>6</b> кадрів / SKU</span>
+      <span class="badge"><b>3D-модель:</b> FBX (банка)</span>
+      <span class="badge"><b>Стандарт:</b> Listex + PepsiCo</span>
+      <span class="badge"><b>Мова:</b> UA</span>
+    </div>
+  </div>
+</header>
+
+<section id="overview">
+  <div class="wrap">
+    <h2><span class="num">1</span>Загальне</h2>
+    <p class="lead">Завдання — вивести фінальні рендери всіх SKU літньої лінійки Pepsi на основі переданих 3D-моделей і пласких етикеток-текстур. Етикетки вже підготовлені й розкладені по літражу; геометрія банки передається у FBX. Пляшкову геометрію по об'ємах див. у розділі «Активи».</p>
+    <div class="kpi">
+      <div class="box"><div class="n">30</div><div class="l">етикеток (UKR0xx)</div></div>
+      <div class="box"><div class="n">4</div><div class="l">банки 0,33 л</div></div>
+      <div class="box"><div class="n">26</div><div class="l">пляшки 0,5–2 л</div></div>
+      <div class="box"><div class="n">2×2</div><div class="l">Reg/Zero × Lazy/Crazy</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="deliverable">
+  <div class="wrap">
+    <h2><span class="num">2</span>Обсяг і деліверабл</h2>
+    <p class="lead">За стандартом оцифрування <b>Listex + PepsiCo</b> (<a href="listex-pepsico-photo-rules.pdf" target="_blank">правила надання фото ↗</a>). На <b>кожен</b> із 30 артикулів — <b>6 рендерів</b>: 5 ракурсів + 1 мокап із краплями.</p>
+    <div class="kpi" style="margin-bottom:22px">
+      <div class="box"><div class="n">180</div><div class="l">рендерів усього</div></div>
+      <div class="box"><div class="n">6</div><div class="l">на кожен SKU</div></div>
+      <div class="box"><div class="n">5</div><div class="l">ракурсів</div></div>
+      <div class="box"><div class="n">1</div><div class="l">мокап з краплями</div></div>
+    </div>
+
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="color:var(--pepsi-blue);margin-bottom:8px">📐 5 ракурсів (на SKU)</h3>
+        <ul style="margin:6px 0 0 18px;font-size:14px;color:#33445c;line-height:1.7">
+          <li><b>4 основні</b> — товар з усіх сторін, строго <b>90°</b> без нахилу (фронт / правий бік / тил / лівий бік). Пляшка й банка = об'ємний товар → 4 сторони.</li>
+          <li><b>1 маркетинговий</b> — під кутом <b>зверху 30°–60°</b> (для пляшок), «найапетитніший», з акуратними відблисками.</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--pepsi-red)">
+        <h3 style="color:var(--pepsi-red);margin-bottom:8px">💧 1 мокап із краплями</h3>
+        <p style="font-size:14px;color:#33445c">Фронтальний кадр із конденсатом/краплями на тарі — дозволено лише для <b>CSD</b> (газовані напої), Pepsi підходить. Краплі натуральні, не перекривають лого й текст етикетки.</p>
+        <p class="note">Візуальний еталон «капельок» — приклад-референс від замовника (надане фото 0,5 л). Можу вбудувати його в бриф, щойно покладеш файл у репозиторій.</p>
+      </div>
+    </div>
+
+    <p class="note">Опційно для мереж <b>AFH / METRO</b>: додатково основні ракурси під нахилом зверху <b>20°–30°</b> для товарів до 0,5 л або до 25 см заввишки (стосується банок 0,33 л і пляшок 0,5 л). Уточнити в замовника, чи входить у цей пакет.</p>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <h2><span class="num">3</span>Активи (що передано)</h2>
+    <p class="lead">Усі файли — у Google Drive, розкладені по літражу. Усередині кожної папки-літражу є підпапка <b>model</b> для 3D-геометрії відповідного об'єму.</p>
+
+    <div class="grid grid-2" style="margin-bottom:22px">
+      <div class="card">
+        <h3 style="color:var(--pepsi-blue);margin-bottom:8px">🧴 3D-модель</h3>
+        <p style="font-size:14px;color:#33445c">Базова банка — <b>Beverage Can</b> (FBX, текстури вкладені + окремо).<br>
+        Геометрія: тіло банки + кришка; матеріали Steel / can_top / Label.</p>
+        <p class="note">Етикетки на моделі — <b>дефолтні</b>. Підмінити на відповідну UKR0xx-текстуру в слот <i>Label</i>.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--pepsi-blue);margin-bottom:8px">🏷️ Етикетки-текстури</h3>
+        <p style="font-size:14px;color:#33445c">30× PNG, <b>8080×2080 px</b>, прозорий фон, без службових шарів.<br>
+        Іменування: <code class="path">UKRxxx_Variant_Promo_Vol.png</code></p>
+        <p class="note ok">Білий = чистий 255,255,255 (для пляшок); без друкарських спот-фарб (TD/Opaque White прибрано).</p>
+      </div>
+    </div>
+
+    <h3 style="color:var(--pepsi-blue);margin:18px 0 10px">Папки на Google Drive</h3>
+    <ul class="vol-list" id="drive">
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/11yZwiJ0Bf8pNUDh05J2yzh6NUMEZcPeD" target="_blank">0,33 л</a> <span class="pill can">банки</span></span><span class="cnt">4 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/12BBYcDlfCyUG5lpVO1Qd4DBoybI2Mehp" target="_blank">0,5 л</a></span><span class="cnt">5 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/1-_2je76NG2XbhBeD3GiKptixoIv9humO" target="_blank">0,75 л</a></span><span class="cnt">4 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/1O0Fq12ilXI017BWNLgWJPxmjC01h5SEN" target="_blank">1 л</a></span><span class="cnt">4 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/1wIf9Jlkg3UyN7-5gfCzZ1pMtwZpSHEJO" target="_blank">1,25 л</a></span><span class="cnt">4 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/1EU3hm4fz70pfLR2HgWTvR8Z9C3LIkz3F" target="_blank">1,75 л</a></span><span class="cnt">4 шт</span></li>
+      <li><span>📁 <a href="https://drive.google.com/drive/folders/1lBKJ2zDEO6DTPdrtqGdTGWXDtcma6yku" target="_blank">2 л</a></span><span class="cnt">5 шт</span></li>
+    </ul>
+    <p class="note">Корінь: <a href="https://drive.google.com/drive/folders/1eB3VtQK9T1bF070PnRBI4blC3HqZuzGB" target="_blank">PEPSI_Label_Textures</a>. <b>Доступ:</b> папку треба розшарити спеціалісту (зараз — лише власник).</p>
+  </div>
+</section>
+
+<section id="sku">
+  <div class="wrap">
+    <h2><span class="num">4</span>Список SKU (30)</h2>
+    <p class="lead">Повний перелік артикулів. Variant: Regular / Zero. Promo-серія: Lazy / Crazy.</p>
+    <div class="card" style="padding:6px 8px">
+    <table>
+      <thead><tr><th>Артикул</th><th>Тип</th><th>Серія</th><th>Літраж</th><th>Тара</th></tr></thead>
+      <tbody id="skubody"></tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="specs">
+  <div class="wrap">
+    <h2><span class="num">5</span>Технічні вимоги до виводу</h2>
+    <p class="lead">Обов'язкові параметри зі стандарту Listex + PepsiCo. Виробничі рекомендації — <span class="editable">підсвічено</span>, їх можна коригувати, не порушуючи обов'язкових.</p>
+    <div class="card" style="margin-bottom:16px">
+      <h3 style="color:var(--pepsi-blue);margin-bottom:10px">Обов'язкові (Listex / PepsiCo)</h3>
+      <div class="spec"><div class="k">Формат</div><div class="v"><b>PNG, без фону</b> (прозорий).</div></div>
+      <div class="spec"><div class="k">Роздільність</div><div class="v"><b>не менше 2304×2304 px</b>.</div></div>
+      <div class="spec"><div class="k">DPI</div><div class="v"><b>не менше 72 dpi</b>.</div></div>
+      <div class="spec"><div class="k">Колір</div><div class="v"><b>RGB</b>, натуральні природні кольори.</div></div>
+      <div class="spec"><div class="k">Світлотінь</div><div class="v">Натуральний світлотіньовий малюнок — <b>без засвітів і без провалів у тінях</b>.</div></div>
+      <div class="spec"><div class="k">Ретуш</div><div class="v">Без дефектів, бруду й пилу; без зайвих елементів. Вирівняні форма й перспектива. Без ліній фальцювання / складання / біговки.</div></div>
+      <div class="spec"><div class="k">Кути</div><div class="v">Основні — строго <b>90°</b> без нахилу; маркетинговий — зверху <b>30°–60°</b>.</div></div>
+      <div class="spec"><div class="k">Текст</div><div class="v">На фото обов'язкова інформація <b>українською</b>. Якщо її нема на тарі — окремим кадром етикетка з перекладом.</div></div>
+      <div class="spec"><div class="k">Загальне</div><div class="v">Товар має виглядати естетично й натурально — так, як він продається в мережі.</div></div>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--muted);margin-bottom:10px">Виробничі рекомендації (для рендеру)</h3>
+      <div class="spec"><div class="k">Рушій</div><div class="v"><span class="editable">Cycles</span> (фотореалізм, GPU). EEVEE — лише для чернеток.</div></div>
+      <div class="spec"><div class="k">Камера</div><div class="v">Довгий фокус (<span class="editable">85–135 мм</span>) — мінімум перспективних спотворень; центр на етикетці.</div></div>
+      <div class="spec"><div class="k">Освітлення</div><div class="v">Студійне: софт-бокс ключ + контровий рим. Рівні відблиски на склі/металі, без пересвітів етикетки.</div></div>
+      <div class="spec"><div class="k">Матеріали</div><div class="v">Пляшка — прозорий PET (Transmission), банка — алюміній (метал). Етикетка — у слот <i>Label</i>, без зайвого roughness.</div></div>
+      <div class="spec"><div class="k">UV / посадка етикетки</div><div class="v">Текстура 8080×2080 лягає по обводу тари; перевірити шов ззаду й вертикальні пропорції тексту.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="naming">
+  <div class="wrap">
+    <h2><span class="num">6</span>Найменування вихідних файлів</h2>
+    <p class="lead">Щоб рендери легко мапилися на SKU — тримати ту саму базу імені, що й текстури.</p>
+    <div class="card">
+      <p style="margin-bottom:10px">Шаблон:</p>
+      <p><code class="path">UKRxxx_Variant_Promo_Vol_Angle.png</code></p>
+      <p style="margin-top:14px;color:#33445c;font-size:14px">Коди ракурсів (<b>6 на SKU</b>): <code class="path">front</code> · <code class="path">right</code> · <code class="path">back</code> · <code class="path">left</code> · <code class="path">hero</code> (під кутом 30–60°) · <code class="path">drops</code> (з краплями).</p>
+      <p style="margin-top:14px;color:#33445c;font-size:14px">Приклади:</p>
+      <p style="margin-top:6px"><code class="path">UKR032_Zero_Crazy_1L75_front.png</code> &nbsp; <code class="path">UKR032_Zero_Crazy_1L75_hero.png</code> &nbsp; <code class="path">UKR032_Zero_Crazy_1L75_drops.png</code></p>
+      <p class="note">Складати рендери у відповідну папку-літраж на Drive (поряд із текстурами), або в нову <code class="path">/renders/</code> — на розсуд замовника.</p>
+    </div>
+  </div>
+</section>
+
+<section id="brand">
+  <div class="wrap">
+    <h2><span class="num">7</span>Бренд-орієнтири</h2>
+    <p class="lead">Колір етикетки в текстурі — еталон. Нижче — фірмові кольори Pepsi для тіней/підкладки/фону.</p>
+    <div class="grid grid-3">
+      <div class="card" style="border-top:5px solid #004B93"><b>Pepsi Blue</b><br><code class="path">#004B93</code></div>
+      <div class="card" style="border-top:5px solid #1A9CD8"><b>Bright Cyan</b><br><code class="path">#1A9CD8</code></div>
+      <div class="card" style="border-top:5px solid #E32934"><b>Pepsi Red</b><br><code class="path">#E32934</code></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>PEPSI · Літня кампанія 2026 — внутрішній бриф для рендеру. <b>noindex</b>.</p>
+    <p style="margin-top:6px">Питання по активах / доступах — до замовника. Оновлено: червень 2026.</p>
+  </div>
+</footer>
+
+<script>
+  // генерація таблиці SKU з даних
+  var SKU = [
+    ["UKR001","reg","Crazy","0,33 л","Банка"],
+    ["UKR002","reg","Lazy","0,33 л","Банка"],
+    ["UKR003","zero","Crazy","0,33 л","Банка"],
+    ["UKR004","zero","Lazy","0,33 л","Банка"],
+    ["UKR005","reg","Lazy","0,5 л","Пляшка"],
+    ["UKR006","reg","Lazy","0,5 л","Пляшка"],
+    ["UKR007","reg","Crazy","0,5 л","Пляшка"],
+    ["UKR022","zero","Lazy","0,5 л","Пляшка"],
+    ["UKR024","zero","Crazy","0,5 л","Пляшка"],
+    ["UKR008","reg","Lazy","0,75 л","Пляшка"],
+    ["UKR009","reg","Crazy","0,75 л","Пляшка"],
+    ["UKR025","zero","Lazy","0,75 л","Пляшка"],
+    ["UKR026","zero","Crazy","0,75 л","Пляшка"],
+    ["UKR010","reg","Lazy","1 л","Пляшка"],
+    ["UKR011","reg","Crazy","1 л","Пляшка"],
+    ["UKR027","zero","Lazy","1 л","Пляшка"],
+    ["UKR028","zero","Crazy","1 л","Пляшка"],
+    ["UKR012","reg","Lazy","1,25 л","Пляшка"],
+    ["UKR013","reg","Crazy","1,25 л","Пляшка"],
+    ["UKR029","zero","Lazy","1,25 л","Пляшка"],
+    ["UKR030","zero","Crazy","1,25 л","Пляшка"],
+    ["UKR014","reg","Lazy","1,75 л","Пляшка"],
+    ["UKR015","reg","Crazy","1,75 л","Пляшка"],
+    ["UKR031","zero","Lazy","1,75 л","Пляшка"],
+    ["UKR032","zero","Crazy","1,75 л","Пляшка"],
+    ["UKR016","reg","Lazy","2 л","Пляшка"],
+    ["UKR017","reg","Crazy","2 л","Пляшка"],
+    ["UKR033","zero","Lazy","2 л","Пляшка"],
+    ["UKR035","zero","Crazy","2 л","Пляшка"],
+    ["UKR036","zero","Lazy","2 л","Пляшка"]
+  ];
+  var tb = document.getElementById('skubody');
+  SKU.forEach(function(r){
+    var variant = r[1]==='zero'
+      ? '<span class="pill zero">Zero</span>'
+      : '<span class="pill reg">Regular</span>';
+    tb.insertAdjacentHTML('beforeend',
+      '<tr><td class="sku">'+r[0]+'</td><td>'+variant+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>');
+  });
+</script>
+</body>
+</html>
